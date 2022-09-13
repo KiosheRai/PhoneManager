@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Notes.Application.Common.Exceptions;
+using PhoneManager.Application.Common.Exceptions;
 using PhoneManager.Application.Interfaces;
 using PhoneManager.Domain;
 using System.Threading;
