@@ -36,10 +36,10 @@ namespace PhoneManager.WebApi
             {
                 options.AddPolicy(name: "Politica", policy =>
                 {
-                    policy.AllowAnyOrigin() 
+                    policy.WithOrigins("http://localhost:4200")
                         .AllowAnyMethod()
                         .AllowAnyHeader();
-                    //.WithOrigins("http://localhost:4200")
+                    
                 });
             });
 
@@ -63,6 +63,7 @@ namespace PhoneManager.WebApi
 
             app.UseRouting();
 
+            //Политику коров не настраивал, т.к. это тестовый проект
             app.UseCors("Politica");
 
             app.UseAuthorization();
