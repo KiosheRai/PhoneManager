@@ -21,7 +21,9 @@ namespace PhoneManager.WebApi.DataTransferObject.PhoneDto
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<CreatePhoneDto, UpdatePhoneCommand>()
+            profile.CreateMap<UpdatePhoneDto, UpdatePhoneCommand>()
+                .ForMember(phoneCommand => phoneCommand.Id,
+                    opt => opt.MapFrom(phoneDto => phoneDto.Id))
                 .ForMember(phoneCommand => phoneCommand.Name,
                     opt => opt.MapFrom(phoneDto => phoneDto.Name))
                 .ForMember(phoneCommand => phoneCommand.Name,

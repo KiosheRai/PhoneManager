@@ -1,0 +1,38 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div class="row">
+    <div class="col-6">
+      <label class="form-label">Имя: </label>
+      <input type="text" maxlength="70" class="form-control" placeholder="Олег" formControlName="name" [ngModel]="phone.name">
+      <span class="text-danger validation-error" *ngIf="name.errors?.required && name.touched">Заполните поле
+      </span>
+    </div>
+
+    <div class="col-6">
+      <label class="form-label">Номер: </label>
+      <input type="text" maxlength="13" class="form-control" placeholder="+37529XXXXXXX" formControlName="mobilePhone" [ngModel]="phone.mobilePhone">
+      <span class="text-danger validation-error"
+        *ngIf="(mobilePhone.errors?.pattern || mobilePhone.errors?.required)&& mobilePhone.touched">Заполните поле как
+        на шаблоне
+      </span>
+    </div>
+
+    <div class="col-6">
+      <label class="form-label">Должность: </label>
+      <input type="text" maxlength="70" class="form-control" placeholder="Строитель" formControlName="jobTitle" [ngModel]="phone.jobTitle">
+      <span class="text-danger validation-error" *ngIf="jobTitle.errors?.required && jobTitle.touched">Заполните поле
+      </span>
+    </div>
+
+    <div class="col-6">
+      <label class="form-label">Дата рождения: </label>
+      <input type="date" class="form-control" placeholder="2022.02.22" formControlName="birthDate" [ngModel]="phone.birthDate | date:'yyyy-MM-dd'">
+      <span class="text-danger validation-error" *ngIf="birthDate.errors?.required && birthDate.touched">Заполните поле
+      </span>
+    </div>
+
+    <div class="col-12 d-flex justify-content-center align-items-center">
+      <button type="submit" class="btn btn-primary py-2 px-5 rounded-0" [disabled]="form.invalid">Create
+        product</button>
+    </div>
+  </div>
+</form>

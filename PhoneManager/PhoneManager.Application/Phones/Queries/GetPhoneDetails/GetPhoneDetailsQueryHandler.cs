@@ -21,7 +21,7 @@ namespace PhoneManager.Application.Phones.Queries.GetPhoneDetails
             CancellationToken cancellationToken)
         {
             var entity = await _dbContext.Phones
-                .FirstOrDefaultAsync(note => note.Id == request.Id, cancellationToken)
+                .FirstOrDefaultAsync(phone => phone.Id == request.Id, cancellationToken)
                     ?? throw new NotFoundException(nameof(Phone), request.Id);
 
             return _mapper.Map<PhoneDetailsVm>(entity);

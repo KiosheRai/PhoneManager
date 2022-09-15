@@ -1,0 +1,8 @@
+<div class="modal-custome">
+  <div class="modal-window p-3 border rounded">
+    <div (click)="modalService.close()" class="close">&times;</div>
+    <h4 class="mb-4 text-center">{{title | titlecase}}</h4>
+
+    <ng-content></ng-content>
+  </div>
+</div>

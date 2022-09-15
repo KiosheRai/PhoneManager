@@ -3,6 +3,7 @@ using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using PhoneManager.Application.Interfaces;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -21,6 +22,7 @@ namespace PhoneManager.Application.Phones.Queries.GetPhoneList
             CancellationToken cancellationToken)
         {
             var query = await _dbContext.Phones
+                .Where(x=>x.isDeleted == false)
                 .ProjectTo<PhoneLookUpDto>(_mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
 

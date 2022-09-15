@@ -25,7 +25,7 @@ namespace PhoneManager.WebApi.Controllers
         {
             var query = new GetPhoneListQuery{};
             var vm = await Mediator.Send(query);
-            return Ok(vm);
+            return Ok(vm.Phones);
         }
 
         [HttpGet("{id}")]

@@ -1,0 +1,14 @@
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Имя: {{phone.name}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted ">Должность: {{phone.jobTitle}}</h6>
+    <p class="card-text mb-2">Телефон: {{phone.mobilePhone}}</p>
+    <p class="card-text mb-2">День рождения: {{phone.birthDate | date: 'YYYY:MM:dd'}}</p>
+    <button class="btn btn-danger" (click)="delete(phone.id!)">Удалить</button>
+    <button class="btn btn-dark ms-1" (click)="modalService.openUpdate()">Изменить</button>
+  </div>
+</div>
+<app-modal *ngIf="modalService.isVisibleUpdate$ | async" [title]="'Редактировать запись'">
+  <app-update-phone [phone]="phone" ></app-update-phone>
+</app-modal>

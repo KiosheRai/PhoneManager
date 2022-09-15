@@ -1,0 +1,12 @@
+form input{
+  margin-bottom: 25px;
+}
+
+form .row>div{
+  position: relative;
+}
+
+.validation-error{
+  position: absolute;
+  bottom: 0;
+}

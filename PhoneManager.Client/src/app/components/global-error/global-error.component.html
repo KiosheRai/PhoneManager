@@ -1,0 +1,6 @@
+<div *ngIf="errorService.error$ | async as error"
+  class="error d-flex justify-content-center align-items-center text-white position-relative">
+  {{error}}
+
+  <button class="position-absolute" (click)="errorService.clear()">&times;</button>
+</div>

@@ -1,0 +1,35 @@
+<header class="p-3 mb-3 border-bottom">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="#" class="nav-link px-2 link-secondary">PhoneManager</a></li>
+        <li><button class="nav-link px-2 link-primary"
+          (click)="modalService.openCreate()">
+            Добавить номер
+          </button></li>
+      </ul>
+
+      <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+        <input type="text" class="form-control" placeholder="Search..."
+        placeholder="Найти по имени..." [(ngModel)]="term">
+      </div>
+    </div>
+  </div>
+</header>
+
+<app-global-error></app-global-error>
+
+<p *ngIf="loading" class="text-center fs-2">
+  Загрузка...
+</p>
+
+<div class="container">
+  <div class="row">
+    <app-phone class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" *ngFor="let phone of phoneService.phones | filterProducts: term " [phone]="phone">
+    </app-phone>
+  </div>
+</div>
+
+<app-modal *ngIf="modalService.isVisibleCreate$ | async" [title]="'Добавить запись'">
+  <app-create-phone></app-create-phone>
+</app-modal>
